@@ -1,0 +1,362 @@
+/* =========================================================
+   INVESTASI FANTASY JOURNEY — FINAL STYLE.CSS
+   Match 8 Realms + Epilog | Bootstrap + Custom UI
+   ========================================================= */
+
+/* ---------- LOCAL FONTS ---------- */
+@font-face{
+  font-family: "Exo 2";
+  src: url("fonts/Exo_2/Exo2-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Exo 2";
+  src: url("fonts/Exo_2/Exo2-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Inter";
+  src: url("fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Inter";
+  src: url("fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Karla";
+  src: url("fonts/Karla/Karla-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Karla";
+  src: url("fonts/Karla/Karla-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Raleway";
+  src: url("fonts/Raleway/Raleway-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Raleway";
+  src: url("fonts/Raleway/Raleway-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---------- ROOT & GLOBAL ---------- */
+:root{
+  --text-white: #f7f7fb;
+  --text-soft: rgba(247,247,251,0.9);
+  --shadow-strong: 0 10px 30px rgba(0,0,0,0.45);
+  --shadow-soft: 0 6px 18px rgba(0,0,0,0.25);
+  --glass-bg: rgba(10, 10, 16, 0.40);
+  --glass-border: rgba(255,255,255,0.12);
+  --btn-radius: 14px;
+  --card-radius: 22px;
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body{
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--text-white);
+  background-color: #000; /* fallback if bg fails */
+  background-attachment: fixed; /* smooth background feel */
+  overflow: hidden;
+}
+
+#progressText{
+  color: rgba(20,20,30,0.82);
+  -webkit-text-stroke: 0.35px rgba(255,255,255,0.6);
+  text-shadow: 0 1px 3px rgba(255,255,255,0.4), 0 2px 8px rgba(0,0,0,0.45);
+  font-weight: 600;
+}
+
+/* Subtle dark overlay so text stays readable on any background */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.10) 0%,
+    rgba(0,0,0,0.55) 70%,
+    rgba(0,0,0,0.70) 100%
+  );
+  z-index: -1;
+}
+
+/* ---------- APP CONTAINER ---------- */
+#app{
+  min-height: 100vh;
+  width: 100%;
+  padding: clamp(14px, 3vw, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.scene{
+  display: grid;
+  grid-template-columns: minmax(0, 480px) minmax(0, 760px);
+  gap: clamp(12px, 2vw, 18px);
+  align-items: stretch;
+  width: min(1300px, 100%);
+  justify-content: end;
+}
+
+/* Bigger character slot for realms 4-7 */
+body.realm-4 .scene,
+body.realm-5 .scene,
+body.realm-6 .scene,
+body.realm-7 .scene{
+  grid-template-columns: minmax(0, 600px) minmax(0, 640px);
+  width: min(1240px, 100%);
+}
+
+.character-pane{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: min(95vh, 1100px);
+}
+
+.character-image{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+  max-height: 95vh;
+}
+
+body.realm-4 .character-pane,
+body.realm-5 .character-pane,
+body.realm-6 .character-pane,
+body.realm-7 .character-pane{
+  height: min(100vh, 1200px);
+}
+
+body.realm-4 .character-image,
+body.realm-5 .character-image,
+body.realm-6 .character-image,
+body.realm-7 .character-image{
+  max-height: 100vh;
+  transform: scale(1.25);
+}
+
+/* fine-tune realm 7 positioning */
+body.realm-7 .character-image{
+  transform: scale(1.25) translateX(-18px);
+}
+
+/* ---------- PAGE CARD ---------- */
+.page{
+  width: min(780px, 90vw);
+  padding: clamp(12px, 2.4vw, 18px);
+  border-radius: var(--card-radius);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-strong);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: pageFade 300ms ease;
+}
+
+/* Soft fade-in when switching pages */
+@keyframes pageFade{
+  from{ opacity: 0; transform: translateY(6px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- ILLUSTRATION ---------- */
+.realm-image{
+  width: clamp(160px, 25vw, 260px); /* about a quarter of the page */
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  background: rgba(255,255,255,0.02);
+}
+
+/* ---------- TEXT ---------- */
+.page,
+.page *{
+  /* subtle outline for readability without muddying text */
+  -webkit-text-stroke: 0.18px rgba(0,0,0,0.38);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.55);
+}
+
+.realm-text{
+  margin: 14px auto 6px;
+  max-width: 720px;
+  color: var(--text-soft);
+  font-size: clamp(1.08rem, 1.9vw, 1.28rem); /* ~2pt smaller */
+  line-height: 1.72;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.65);
+  font-family: "Karla", "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* Optional title if you ever add it */
+.realm-title{
+  font-weight: 700;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+}
+
+h1, h2{
+  font-family: "Exo 2", "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+h3, h4, h5{
+  font-family: "Raleway", "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* ---------- BUTTONS ---------- */
+.nav-button{
+  min-width: 170px;
+  padding: 10px 18px;
+  border-radius: var(--btn-radius);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.nav-button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.45);
+}
+
+.nav-button:active{
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+/* ---------- RIDDLE / CHOICES ---------- */
+.choices{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 12px;
+  padding-bottom: 4px;
+}
+
+.choice-btn{
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-align: center;
+  border: 1.5px solid rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.03);
+  color: var(--text-white);
+  transition: transform 120ms ease, background 120ms ease, border 120ms ease;
+}
+
+.choice-btn:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.95);
+}
+
+.choice-btn:active{
+  transform: translateY(0);
+  background: rgba(255,255,255,0.14);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (min-width: 768px){
+  .page{
+    padding: 26px 30px;
+  }
+  .choices{
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .choice-btn{
+    max-width: none;
+  }
+}
+
+@media (min-width: 1024px){
+  .choices{
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 767px){
+  .scene{
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .character-pane{
+    height: 220px;
+    order: -1;
+  }
+  .character-image{
+    max-height: 220px;
+  }
+  .page{
+    width: min(780px, 100%);
+  }
+}
+
+/* ---------- OPTIONAL REALM TINTS ----------
+   If you ever want slight realm-specific UI color shifts,
+   you can toggle class on body like body.realm-1, body.realm-2, etc.
+   Not required for current JS, but ready if you want.
+---------------------------------------- */
+body.realm-1 .page{ background: rgba(210, 240, 255, 0.38); } /* sanctuary */
+body.realm-2 .page{ background: rgba(255, 240, 200, 0.30); } /* bonds */
+body.realm-3 .page{ background: rgba(200, 255, 230, 0.38); } /* funds */
+body.realm-4 .page{ background: rgba(255, 220, 160, 0.38); } /* aurum */
+body.realm-5 .page{ background: rgba(160, 170, 255, 0.38); } /* stocks */
+body.realm-6 .page{ background: rgba(170, 120, 255, 0.38); } /* crypto */
+body.realm-7 .page{ background: rgba(255, 120, 120, 0.36); } /* futures */
+body.realm-8 .page{ background: rgba(120, 60, 150, 0.30); } /* abyss */
+body.realm-9 .page{ background: rgba(255, 245, 220, 0.30); } /* epilog */
+
+/* themed overlays, just a shade darker than each realm's background */
+body.realm-1 .page{ background: rgba(30, 46, 65, 0.30); } /* cool blue tint */
+body.realm-2 .page{ background: rgba(117, 86, 113, 0.30); } /* warm sand tint */
+body.realm-3 .page{ background: rgba(76, 52, 91, 0.30); } /* mint/teal tint */
+body.realm-4 .page{ background: rgba(98, 77, 40, 0.30); } /* amber/gold tint */
+
