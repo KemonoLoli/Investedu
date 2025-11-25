@@ -5,6 +5,29 @@
 
 const realms = [
   // =======================================================
+  // PROLOG — Awal Perjalanan
+  // =======================================================
+  {
+    id: 0,
+    name: "Prolog: Awal Perjalanan",
+    bg: "assets/backgrounds/bg_prolog.webp",
+    pages: [
+      {
+        type: "prolog",
+        img: "assets/backgrounds/bg_prolog.webp",
+        text: `Di antara dunia nyata dan dunia tak kasatmata,<br>
+terbentang sebuah dimensi bernama <b>Celestial Dungeon</b> —<br>
+tempat seluruh pengetahuan tentang risiko dan peluang investasi<br>
+mewujud menjadi kekuatan yang dapat disentuh.<br><br>
+Dalam kekacauan yang mulai bangkit, secercah cahaya bernama <b>Lumi</b><br>
+membisikkan panggilan pertamamu:<br><br>
+<b>“Penjelajah… langkahmu dimulai di Sanctuary Gate.”</b>`,
+        button: "Mulai Perjalanan"
+      }
+    ]
+  },
+
+  // =======================================================
   // REALM 1 — Sanctuary Gate (Tabungan & Deposito)
   // =======================================================
   {
@@ -616,39 +639,22 @@ Lantai runtuh di bawahmu.<br><br>
   {
     id: 9,
     name: "Realm of Clarity",
-    bg: "assets/backgrounds/bg_epilog.webp",
+    bg: "assets/backgrounds/bg_prolog.webp",
     pages: [
       {
         type: "epilog",
         img: "assets/illustrations/epilog.webp",
-        text: `Cahaya dari portal terakhir perlahan meredup.<br><br>
-Ketika kau melangkah keluar dari <b>Abyss of Lies</b>, udara terasa berbeda —<br>
-hangat, nyata, dan jujur.<br><br>
-Semua pengetahuan yang kau kumpulkan dari setiap realm kini menyatu<br>
-sebagai cahaya kecil yang mengelilingimu:<br>
-<b>harmoni antara keamanan, risiko, peluang, dan kewaspadaan.</b><br><br>
-Di kejauhan, Lumi muncul kembali sebagai cahaya kecil berwarna biru.<br>
-Ia berkata dengan lembut:<br><br>
-<b>“Perjalananmu berakhir di sini… tetapi pengetahuanmu baru saja dimulai.”</b>`
-      },
-      {
-        type: "epilog",
-        img: "assets/illustrations/epilog.webp",
-        text: `Lumi melayang perlahan ke udara, meninggalkan jejak cahaya lembut di belakangnya.<br><br>
-<b>“Di dunia nyata, jalanmu tidak dipenuhi portal atau monster…<br>
-tetapi penuh pilihan.”</b><br><br>
-Cahaya di sekelilingmu mulai memadat, membentuk sebuah <b>stempel simbolis</b> —<br>
-tanda bahwa kamu telah menyelesaikan perjalanan sebagai <b>Penjelajah Bijak</b>.`
-      },
-      {
-        type: "epilog",
-        img: "assets/illustrations/epilog.webp",
-        text: `<b>“Gunakan apa yang kau pelajari untuk melindungi dirimu…<br>
-dan membantu mereka yang masih tersesat.”</b><br><br>
-Cahaya terakhir menyatu dengan layar.<br><br>
-<b>Selamat — kamu telah memahami dunia investasi<br>
-dari pondasi hingga bahaya terbesarnya.<br>
-Kini kamu siap melangkah dengan lebih percaya diri di dunia nyata.”</b>`
+        button: "Selesai",
+        text: `Cahaya dari portal terakhir menghilang perlahan, meninggalkanmu dalam ruang putih tak berujung.<br><br>
+Di sini, seluruh pengetahuan yang kau kumpulkan dari delapan realm<br>
+mulai menyatu sebagai cahaya yang berputar lembut di sekelilingmu —<br>
+<b>harmoni antara dasar yang aman, peluang pertumbuhan, risiko tinggi, dan kewaspadaan terhadap penipuan.</b><br><br>
+Lumi muncul sebagai titik cahaya biru di kejauhan, suaranya hangat namun penuh rasa hormat:<br><br>
+<b>“Penjelajah… kau telah melalui perjalanan yang tak mudah.<br>
+Kau bukan hanya bertahan—kau memahami.”</b><br><br>
+Cahaya mengembang, membentuk simbol akhir yang tenang dan bersih.<br>
+<b>Dengan ini, perjalananmu di Celestial Dungeon resmi selesai.<br>
+Kini kau melangkah ke dunia nyata dengan pemahaman dan keberanian baru.”</b>`
       }
     ]
   }
@@ -735,6 +741,22 @@ function loadPage() {
   document.body.style.backgroundPosition = "center";
   document.body.style.backgroundRepeat = "no-repeat";
   document.body.style.minHeight = "100vh";
+  document.body.classList.toggle("prolog-mode", page.type === "prolog");
+  document.body.classList.toggle("epilog-mode", page.type === "epilog");
+
+  if (page.type === "prolog") {
+    app.innerHTML = `
+      <div class="prolog-overlay">
+        <div class="prolog-text">
+          <p class="realm-text mb-3">${page.text}</p>
+          <button class="btn btn-success nav-button" onclick="nextRealm()">
+            ${page.button || "Mulai"}
+          </button>
+        </div>
+      </div>
+    `;
+    return;
+  }
 
   if (page.type === "edu") {
     app.innerHTML = renderScene(`
@@ -744,6 +766,22 @@ function loadPage() {
         <button class="btn btn-primary nav-button mt-3" onclick="nextPage()">Lanjut</button>
       </div>
     `);
+    updateProgress(currentRealmIndex + 1, currentPageIndex + 1);
+    return;
+  }
+
+  if (page.type === "epilog") {
+    app.innerHTML = `
+      <div class="epilog-overlay">
+        <div class="epilog-content text-center">
+          <img src="assets/characters/realm1_lumi.webp" class="epilog-character mb-3" alt="Lumi">
+          <p class="realm-text">${page.text}</p>
+          <button class="btn btn-success nav-button mt-3" onclick="restartGame()">
+            ${page.button || "Selesai"}
+          </button>
+        </div>
+      </div>
+    `;
     updateProgress(currentRealmIndex + 1, currentPageIndex + 1);
     return;
   }
