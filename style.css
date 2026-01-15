@@ -4,7 +4,7 @@
    ========================================================= */
 
 /* ---------- LOCAL FONTS ---------- */
-@font-face{
+@font-face {
   font-family: "Exo 2";
   src: url("fonts/Exo_2/Exo2-VariableFont_wght.ttf") format("truetype");
   font-weight: 200 900;
@@ -12,7 +12,7 @@
   font-display: swap;
 }
 
-@font-face{
+@font-face {
   font-family: "Exo 2";
   src: url("fonts/Exo_2/Exo2-Italic-VariableFont_wght.ttf") format("truetype");
   font-weight: 200 900;
@@ -20,7 +20,7 @@
   font-display: swap;
 }
 
-@font-face{
+@font-face {
   font-family: "Inter";
   src: url("fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
   font-weight: 100 900;
@@ -28,7 +28,7 @@
   font-display: swap;
 }
 
-@font-face{
+@font-face {
   font-family: "Inter";
   src: url("fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf") format("truetype");
   font-weight: 100 900;
@@ -36,7 +36,7 @@
   font-display: swap;
 }
 
-@font-face{
+@font-face {
   font-family: "Karla";
   src: url("fonts/Karla/Karla-VariableFont_wght.ttf") format("truetype");
   font-weight: 200 800;
@@ -44,7 +44,7 @@
   font-display: swap;
 }
 
-@font-face{
+@font-face {
   font-family: "Karla";
   src: url("fonts/Karla/Karla-Italic-VariableFont_wght.ttf") format("truetype");
   font-weight: 200 800;
@@ -52,7 +52,7 @@
   font-display: swap;
 }
 
-@font-face{
+@font-face {
   font-family: "Raleway";
   src: url("fonts/Raleway/Raleway-VariableFont_wght.ttf") format("truetype");
   font-weight: 100 900;
@@ -60,7 +60,7 @@
   font-display: swap;
 }
 
-@font-face{
+@font-face {
   font-family: "Raleway";
   src: url("fonts/Raleway/Raleway-Italic-VariableFont_wght.ttf") format("truetype");
   font-weight: 100 900;
@@ -69,20 +69,23 @@
 }
 
 /* ---------- ROOT & GLOBAL ---------- */
-:root{
+:root {
   --text-white: #f7f7fb;
-  --text-soft: rgba(247,247,251,0.9);
-  --shadow-strong: 0 10px 30px rgba(0,0,0,0.45);
-  --shadow-soft: 0 6px 18px rgba(0,0,0,0.25);
+  --text-soft: rgba(247, 247, 251, 0.9);
+  --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.25);
   --glass-bg: rgba(10, 10, 16, 0.40);
-  --glass-border: rgba(255,255,255,0.12);
+  --glass-border: rgba(255, 255, 255, 0.12);
   --btn-radius: 14px;
   --card-radius: 22px;
 }
 
-*{ box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body{
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -90,45 +93,45 @@ html, body{
   overflow: hidden;
 }
 
-body{
+body {
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   color: var(--text-white);
-  background-color: #000; /* fallback if bg fails */
-  background-attachment: fixed; /* smooth background feel */
+  background-color: #000;
+  /* fallback if bg fails */
+  background-attachment: fixed;
+  /* smooth background feel */
   overflow: hidden;
 }
 
-#progressText{
+#progressText {
   color: #000;
   -webkit-text-stroke: 0;
-  text-shadow: 0 1px 2px rgba(255,255,255,0.15), 0 1px 3px rgba(0,0,0,0.25);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.15), 0 1px 3px rgba(0, 0, 0, 0.25);
   font-weight: 700;
 }
 
 /* Subtle dark overlay so text stays readable on any background */
-body::before{
-  content:"";
+body::before {
+  content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(0,0,0,0.10) 0%,
-    rgba(0,0,0,0.55) 70%,
-    rgba(0,0,0,0.70) 100%
-  );
+  background: radial-gradient(circle at center,
+      rgba(0, 0, 0, 0.10) 0%,
+      rgba(0, 0, 0, 0.55) 70%,
+      rgba(0, 0, 0, 0.70) 100%);
   z-index: -1;
 }
 
-.prolog-mode body::before{
+.prolog-mode body::before {
   background: none;
 }
 
-.epilog-mode body::before{
+.epilog-mode body::before {
   background: none;
 }
 
 /* ---------- APP CONTAINER ---------- */
-#app{
+#app {
   min-height: 100vh;
   width: 100%;
   padding: clamp(14px, 3vw, 28px);
@@ -137,17 +140,17 @@ body::before{
   justify-content: flex-end;
 }
 
-.prolog-mode #app{
+.prolog-mode #app {
   padding: 0;
   justify-content: center;
 }
 
-.epilog-mode #app{
+.epilog-mode #app {
   padding: 0;
   justify-content: center;
 }
 
-.prolog-overlay{
+.prolog-overlay {
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -156,43 +159,44 @@ body::before{
   padding: clamp(18px, 4vw, 36px);
 }
 
-.epilog-overlay{
+.epilog-overlay {
   width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding: clamp(18px, 4vw, 36px);
-  padding-bottom: max(200px, 14vh); /* lift content above progress bar */
+  padding-bottom: max(200px, 14vh);
+  /* lift content above progress bar */
 }
 
-.prolog-text{
+.prolog-text {
   width: min(900px, 94vw);
   text-align: center;
   padding: clamp(16px, 4vw, 26px);
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.65);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
-.epilog-content{
+.epilog-content {
   width: min(900px, 94vw);
   text-align: center;
   padding: clamp(16px, 4vw, 26px);
   color: var(--text-white);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.65);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
 }
 
-.epilog-content .nav-button{
+.epilog-content .nav-button {
   margin-bottom: clamp(14px, 2vh, 22px);
 }
 
-.epilog-character{
+.epilog-character {
   width: clamp(140px, 30vw, 220px);
   max-height: 260px;
   object-fit: contain;
 }
 
-.scene{
+.scene {
   display: grid;
   grid-template-columns: minmax(0, 480px) minmax(0, 760px);
   gap: clamp(12px, 2vw, 18px);
@@ -205,48 +209,48 @@ body::before{
 body.realm-4 .scene,
 body.realm-5 .scene,
 body.realm-6 .scene,
-body.realm-7 .scene{
+body.realm-7 .scene {
   grid-template-columns: minmax(0, 600px) minmax(0, 640px);
   width: min(1240px, 100%);
 }
 
-.character-pane{
+.character-pane {
   display: flex;
   align-items: center;
   justify-content: center;
   height: min(95vh, 1100px);
 }
 
-.character-image{
+.character-image {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
   max-height: 95vh;
 }
 
 body.realm-4 .character-pane,
 body.realm-5 .character-pane,
 body.realm-6 .character-pane,
-body.realm-7 .character-pane{
+body.realm-7 .character-pane {
   height: min(100vh, 1200px);
 }
 
 body.realm-4 .character-image,
 body.realm-5 .character-image,
 body.realm-6 .character-image,
-body.realm-7 .character-image{
+body.realm-7 .character-image {
   max-height: 100vh;
   transform: scale(1.25);
 }
 
 /* fine-tune realm 7 positioning */
-body.realm-7 .character-image{
+body.realm-7 .character-image {
   transform: scale(1.25) translateX(-18px);
 }
 
 /* ---------- PAGE CARD ---------- */
-.page{
+.page {
   width: min(780px, 90vw);
   padding: clamp(12px, 2.4vw, 18px);
   padding-bottom: clamp(18px, 3vw, 26px);
@@ -262,86 +266,98 @@ body.realm-7 .character-image{
 }
 
 /* Soft fade-in when switching pages */
-@keyframes pageFade{
-  from{ opacity: 0; transform: translateY(6px); }
-  to{ opacity: 1; transform: translateY(0); }
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ---------- ILLUSTRATION ---------- */
-.realm-image{
-  width: clamp(160px, 25vw, 260px); /* about a quarter of the page */
+.realm-image {
+  width: clamp(160px, 25vw, 260px);
+  /* about a quarter of the page */
   aspect-ratio: 1 / 1;
   object-fit: contain;
   border-radius: 18px;
   box-shadow: var(--shadow-soft);
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 /* ---------- TEXT ---------- */
 .page,
-.page *{
+.page * {
   /* subtle outline for readability without muddying text */
-  -webkit-text-stroke: 0.18px rgba(0,0,0,0.38);
-  text-shadow: 0 1px 4px rgba(0,0,0,0.55);
+  -webkit-text-stroke: 0.18px rgba(0, 0, 0, 0.38);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
 }
 
-.realm-text{
+.realm-text {
   margin: 14px auto 6px;
   max-width: 720px;
   color: var(--text-soft);
-  font-size: clamp(1.08rem, 1.9vw, 1.28rem); /* ~2pt smaller */
+  font-size: clamp(1.08rem, 1.9vw, 1.28rem);
+  /* ~2pt smaller */
   line-height: 1.5;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.65);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
   font-family: "Karla", "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
 /* Black text for prolog + realm 1 */
 .prolog-mode .realm-text,
-body.realm-1 .realm-text{
+body.realm-1 .realm-text {
   color: #000;
-  text-shadow: 0 1px 2px rgba(255,255,255,0.35), 0 1px 4px rgba(0,0,0,0.25);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35), 0 1px 4px rgba(0, 0, 0, 0.25);
   -webkit-text-stroke: 0;
 }
 
 /* Optional title if you ever add it */
-.realm-title{
+.realm-title {
   font-weight: 700;
   font-size: clamp(1.15rem, 2vw, 1.4rem);
   letter-spacing: 0.4px;
   margin-bottom: 8px;
 }
 
-h1, h2{
+h1,
+h2 {
   font-family: "Exo 2", "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
-h3, h4, h5{
+h3,
+h4,
+h5 {
   font-family: "Raleway", "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
 /* ---------- BUTTONS ---------- */
-.nav-button{
+.nav-button {
   min-width: 170px;
   padding: 10px 18px;
   border-radius: var(--btn-radius);
   font-weight: 600;
   letter-spacing: 0.2px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
   transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
 }
 
-.nav-button:hover{
+.nav-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(0,0,0,0.45);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45);
 }
 
-.nav-button:active{
+.nav-button:active {
   transform: translateY(0);
   opacity: 0.9;
 }
 
 /* ---------- RIDDLE / CHOICES ---------- */
-.choices{
+.choices {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
@@ -349,7 +365,7 @@ h3, h4, h5{
   padding-bottom: 4px;
 }
 
-.choice-btn{
+.choice-btn {
   width: 100%;
   max-width: 520px;
   margin: 0 auto;
@@ -358,93 +374,189 @@ h3, h4, h5{
   font-weight: 600;
   letter-spacing: 0.2px;
   text-align: center;
-  border: 1.5px solid rgba(255,255,255,0.65);
-  background: rgba(255,255,255,0.03);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text-white);
   transition: transform 120ms ease, background 120ms ease, border 120ms ease;
 }
 
-.choice-btn:hover{
+.choice-btn:hover {
   transform: translateY(-1px);
-  background: rgba(255,255,255,0.10);
-  border-color: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.95);
 }
 
-.choice-btn:active{
+.choice-btn:active {
   transform: translateY(0);
-  background: rgba(255,255,255,0.14);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 /* ---------- RESPONSIVE ---------- */
-@media (min-width: 768px){
-  .page{
+@media (min-width: 768px) {
+  .page {
     padding: 26px 30px;
   }
-  .choices{
+
+  .choices {
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
-  .choice-btn{
+
+  .choice-btn {
     max-width: none;
   }
 }
 
-@media (min-width: 1024px){
-  .choices{
+@media (min-width: 1024px) {
+  .choices {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 12px;
   }
 }
 
-@media (max-width: 767px){
-  .scene{
-    grid-template-columns: 1fr 1fr;
+@media (max-width: 767px) {
+  #app {
+    align-items: flex-end;
+    /* Align bottom */
+    padding-bottom: 80px;
+    /* Space for progress bar */
+  }
+
+  .scene {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    /* Character then Page */
     justify-items: center;
-    align-items: start;
+    align-items: flex-end;
     gap: 10px;
     width: 100%;
+    height: 100%;
   }
-  .prolog-overlay{
+
+  .prolog-overlay,
+  .epilog-overlay {
     align-items: flex-end;
+    padding-bottom: 100px;
   }
-  .epilog-overlay{
+
+  .character-pane {
+    height: 25vh;
+    /* Top 25% */
+    width: 100%;
+    display: flex;
     align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 0;
   }
-  .character-pane{
-    height: auto;
-    order: 0;
+
+  .character-image {
+    width: auto;
+    height: 100%;
+    max-height: 25vh;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
   }
-  .character-image{
-    width: clamp(140px, 45vw, 240px);
-    max-height: 240px;
+
+  .realm-image {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 8px !important;
   }
-  .realm-image{
-    width: clamp(140px, 45vw, 240px);
+
+  .page {
+    width: 100%;
+    max-width: 400px;
+    padding: 16px;
+    max-height: 55vh;
+    /* Reserve space for character + progress bar */
+    font-size: 0.95rem;
+    overflow-y: auto;
+    z-index: 1;
   }
-  .page{
-    width: min(780px, 100%);
-    max-height: calc(100vh - 140px);
+
+  .realm-text {
+    font-size: 1rem;
+    margin: 8px 0;
+  }
+
+  .nav-button {
+    min-width: 120px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+  }
+
+  /* Stack choices vertically on small mobile */
+  .choices {
+    grid-template-columns: 1fr;
   }
 }
 
-/* ---------- OPTIONAL REALM TINTS ----------
-   If you ever want slight realm-specific UI color shifts,
-   you can toggle class on body like body.realm-1, body.realm-2, etc.
-   Not required for current JS, but ready if you want.
----------------------------------------- */
-body.realm-1 .page{ background: rgba(210, 240, 255, 0.38); } /* sanctuary */
-body.realm-2 .page{ background: rgba(255, 240, 200, 0.30); } /* bonds */
-body.realm-3 .page{ background: rgba(200, 255, 230, 0.38); } /* funds */
-body.realm-4 .page{ background: rgba(255, 220, 160, 0.38); } /* aurum */
-body.realm-5 .page{ background: rgba(160, 170, 255, 0.38); } /* stocks */
-body.realm-6 .page{ background: rgba(170, 120, 255, 0.38); } /* crypto */
-body.realm-7 .page{ background: rgba(255, 120, 120, 0.36); } /* futures */
-body.realm-8 .page{ background: rgba(120, 60, 150, 0.30); } /* abyss */
-body.realm-9 .page{ background: rgba(255, 245, 220, 0.30); } /* epilog */
+/* ---------- REALM TINTS ---------- */
+body.realm-1 .page {
+  background: rgba(210, 240, 255, 0.38);
+}
+
+/* sanctuary */
+body.realm-2 .page {
+  background: rgba(255, 240, 200, 0.30);
+}
+
+/* bonds */
+body.realm-3 .page {
+  background: rgba(200, 255, 230, 0.38);
+}
+
+/* funds */
+body.realm-4 .page {
+  background: rgba(255, 220, 160, 0.38);
+}
+
+/* aurum */
+body.realm-5 .page {
+  background: rgba(160, 170, 255, 0.38);
+}
+
+/* stocks */
+body.realm-6 .page {
+  background: rgba(170, 120, 255, 0.38);
+}
+
+/* crypto */
+body.realm-7 .page {
+  background: rgba(255, 120, 120, 0.36);
+}
+
+/* futures */
+body.realm-8 .page {
+  background: rgba(120, 60, 150, 0.30);
+}
+
+/* abyss */
+body.realm-9 .page {
+  background: rgba(255, 245, 220, 0.30);
+}
+
+/* epilog */
 
 /* themed overlays, just a shade darker than each realm's background */
-body.realm-1 .page{ background: rgba(30, 46, 65, 0.30); } /* cool blue tint */
-body.realm-2 .page{ background: rgba(117, 86, 113, 0.30); } /* warm sand tint */
-body.realm-3 .page{ background: rgba(76, 52, 91, 0.30); } /* mint/teal tint */
-body.realm-4 .page{ background: rgba(98, 77, 40, 0.30); } /* amber/gold tint */
+body.realm-1 .page {
+  background: rgba(30, 46, 65, 0.30);
+}
 
+/* cool blue tint */
+body.realm-2 .page {
+  background: rgba(117, 86, 113, 0.30);
+}
+
+/* warm sand tint */
+body.realm-3 .page {
+  background: rgba(76, 52, 91, 0.30);
+}
+
+/* mint/teal tint */
+body.realm-4 .page {
+  background: rgba(98, 77, 40, 0.30);
+}
+
+/* amber/gold tint */
