@@ -395,6 +395,20 @@ h5 {
 @media (min-width: 768px) {
   .page {
     padding: 26px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page::before,
+  .page::after {
+    content: "";
+    flex: 1;
+    min-height: 0;
+  }
+
+  .page>* {
+    flex-shrink: 0;
   }
 
   .choices {

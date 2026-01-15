@@ -787,6 +787,15 @@ function updateProgress() {
   }
 }
 
+function resetGame() {
+  if (confirm("Apakah kamu yakin ingin mengulang permainan dari awal?")) {
+    localStorage.removeItem("progress");
+    currentRealmIndex = 0;
+    currentPageIndex = 0;
+    location.reload();
+  }
+}
+
 function loadPage() {
   const app = document.getElementById("app");
   const realm = realms[currentRealmIndex];
@@ -981,12 +990,7 @@ function nextRealm() {
   loadPage();
 }
 
-function restartGame() {
-  localStorage.removeItem("progress");
-  currentRealmIndex = 0;
-  currentPageIndex = 0;
-  loadPage();
-}
+
 
 // =========================================================
 // INIT
@@ -1001,4 +1005,10 @@ window.addEventListener("load", () => {
   }
 
   loadPage();
+
+  // Attach restart button listener
+  const restartBtn = document.getElementById("restartBtn");
+  if (restartBtn) {
+    restartBtn.addEventListener("click", resetGame);
+  }
 });
